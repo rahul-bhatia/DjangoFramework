@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find Grade Project 1</title>
+	<style type="text/css">
+		*{
+			font-family: calibiri;
+			font-size: 40px;
+		}
+	</style>
+	<script type="text/javascript">
+		function validate() {
+			var m=document.getElementById('marks')
+			var a=document.getElementById('ans')
+			if(m.value=="" | m.value<0 | m.value>100){
+				alert('invalud marks')
+				m.value=""
+				m.focus()
+				a.textContent=""
+				return false
+			}
+			else{
+				return true
+			}
+		}
+	</script>
+</head>
+<body>
+	<CENTER>
+	<h1>
+		Find Grade App
+	</h1>
+	<form METHOD="POST" onsubmit="return validate()">
+		{%csrf_token%}
+		<input type="number" name="num" placeholder="Enter your Marks"  id="marks">
+		<br>
+		<br>
+		<input type="submit" name="cal" value="find">
+	</form>
+	<h2 id="ans">{{ msg}}</h2>
+	</CENTER>
+</body>
+</html>
